@@ -1,1 +1,0 @@
-swiper_landing
