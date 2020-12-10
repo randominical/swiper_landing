@@ -44,4 +44,21 @@ let pageSlider = new Swiper('.page', {
 
     //обновить свайпер при изменении дочерних элементов слайдера
     observeSlideChildren: true,
+
+    //навигация
+    //буллеты, текущее положение, прогрессбар
+    pagination: {
+        el: '.page__pagination',
+        type: 'bullets',
+        clickable: true,
+        bulletClass: 'page__bullet',
+        bulletActiveClass: "page__bullet_active",
+    },
+    //скролл
+    scrollbar: {
+        el: '.page__scroll',
+        dragClass: 'page__drag-scroll',
+        //возможность перетаскивать скролл
+        draggable: true
+    },
 })
