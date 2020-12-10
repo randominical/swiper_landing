@@ -39,6 +39,28 @@ body {
 .wrapper {
     min-height: 100%;
 }
+/*----------------*/
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.menu {
+    display: flex;
+    min-height: 50px;
+    align-items: center;
+}
+.menu__link {
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s ease 0s;
+    margin: 0 20px 0 0;
+}
+/*----------------*/
 .page {
     position: fixed;
     width: 100%;
