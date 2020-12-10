@@ -75,6 +75,22 @@ body {
 .page__bullet_active {
     background-color: #fff;
 }
+.page__scroll {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.page__drag-scroll {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
 /*----------------*/
 .screen {
     flex: 1 0 100%;
