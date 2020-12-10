@@ -1,3 +1,6 @@
+//появление элементов
+let wrapper = document.querySelector('.wrapper');
+
 let pageSlider = new Swiper('.page', {
     //переназначение стандартных классов
     wrapperClass: "page__wrapper",
@@ -70,6 +73,7 @@ let pageSlider = new Swiper('.page', {
         //инициализация
         init: function () {
             menuSlider();  
+            wrapper.classList.add('_loaded');
         },
         //смена слайда
         slideChange: function () {
