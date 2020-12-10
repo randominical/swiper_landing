@@ -72,7 +72,8 @@ let pageSlider = new Swiper('.page', {
     on: {
         //инициализация
         init: function () {
-            menuSlider();  
+            menuSlider();
+            setScrollType();
             wrapper.classList.add('_loaded');
         },
         //смена слайда
@@ -80,6 +81,10 @@ let pageSlider = new Swiper('.page', {
             menuSliderRemove();
             menuLinks[pageSlider.realIndex].classList.add('_active');
         },
+        //изменение размера окна
+        resize: function () {
+            setScrollType();
+        }
     },
 });
 
@@ -104,6 +109,26 @@ function menuSliderRemove() {
     let menuLinkActive = document.querySelector('.menu__link._active');
     if (menuLinkActive) {
         menuLinkActive.classList.remove('_active');
+    }
+}
+
+//отключение поэкранной прокрутки при переполнении экрана
+function setScrollType() {
+    if (wrapper.classList.contains('_free')) {
+        wrapper.classList.remove('_free');
+        pageSlider.params.freeMode = false;
+    }
+    for (let index = 0; index < pageSlider.slides.length; index++) {
+        const pageSlide = pageSlider.slides[index];
+        const pageSlideContent = pageSlide.querySelector('.screen__content');
+        if (pageSlideContent) {
+            const pageSlideContentHeight = pageSlideContent.offsetHeight;
+            if (pageSlideContentHeight > window.innerHeight) {
+                wrapper.classList.add('_free');
+                pageSlider.params.freeMode = true;
+                break;
+            }
+        }
     }
 }
 
