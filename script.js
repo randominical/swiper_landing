@@ -61,4 +61,47 @@ let pageSlider = new Swiper('.page', {
         //возможность перетаскивать скролл
         draggable: true
     },
-})
+    
+    //отключение автоинициализации (для работы меню)
+    init: false,
+
+    //события
+    on: {
+        //инициализация
+        init: function () {
+            menuSlider();  
+        },
+        //смена слайда
+        slideChange: function () {
+            menuSliderRemove();
+            menuLinks[pageSlider.realIndex].classList.add('_active');
+        },
+    },
+});
+
+let menuLinks = document.querySelectorAll('.menu__link');
+
+function menuSlider() {
+    if (menuLinks.length > 0) {
+        menuLinks[pageSlider.realIndex].classList.add('_active');
+        for (let index = 0; index < menuLinks.length; index++) {
+            const menuLink = menuLinks[index];
+            menuLink.addEventListener("click", function (e) {
+                menuSliderRemove();
+                pageSlider.slideTo(index, 800);
+                menuLink.classList.add('_active');
+                e.preventDefault();
+            });
+        }
+    }
+}
+
+function menuSliderRemove() {
+    let menuLinkActive = document.querySelector('.menu__link._active');
+    if (menuLinkActive) {
+        menuLinkActive.classList.remove('_active');
+    }
+}
+
+//инициализируем слайдер вручную
+pageSlider.init();
